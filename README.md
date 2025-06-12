@@ -1,6 +1,8 @@
 # Deep Generative Neural Operator 
 The implementation of the [Deep Generative Neural Operator (DGenNO)](https://arxiv.org/pdf/2502.06250).
 
+**Note:** The implementation of Deep Generative Neural Operator (DGenNO) and other popular deep neural operator (DNO) methods (e.g., DeepONet, FNO, PI-DeepONet, and PINO) can also be found on the Github repository: [Deep-Neural-Operators-for-PDEs](https://github.com/yaohua32/Deep-Neural-Operators-for-PDEs).
+
 ## 📌 Benchmark Problems
 We evaluate the DNO frameworks on the following PDEs:
 #### 1. Burger’s Equation
