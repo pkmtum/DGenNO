@@ -26,11 +26,14 @@ We also consider the inverse problem of reconstructing the **piecewise-constant*
 
 ## 📖 Citation
 ```
-@article{zang2025dgno,
-  title={DGNO: A Novel Physics-aware Neural Operator for Solving Forward and Inverse PDE Problems based on Deep, Generative Probabilistic Modeling},
+@article{zang2025dgenno,
+  title={DGenNO: a novel physics-aware neural operator for solving forward and inverse PDE problems based on deep, generative probabilistic modeling},
   author={Zang, Yaohua and Koutsourelakis, Phaedon-Stelios},
-  journal={arXiv preprint arXiv:2502.06250},
-  year={2025}
+  journal={Journal of Computational Physics},
+  volume={538},
+  pages={114137},
+  year={2025},
+  publisher={Elsevier}
 }
 ```
 
