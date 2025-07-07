@@ -3,13 +3,20 @@ The implementation of the [Deep Generative Neural Operator (DGenNO)](https://arx
 
 **Note:** The implementation of Deep Generative Neural Operator (DGenNO) and other popular deep neural operator (DNO) methods (e.g., DeepONet, FNO, PI-DeepONet, and PINO) can also be found on the Github repository: [Deep-Neural-Operators-for-PDEs](https://github.com/yaohua32/Deep-Neural-Operators-for-PDEs).
 
-<!-- <img src="./Docs/DGM4DGNO.png" alt="The Deep Generative Neural Operator (DGenNO) framework" width="600" height='300'/> -->
-
+#### The DGenNO framework
 <p align="center">
   <img src="./Docs/DGM4DGNO.png" alt="DGenNO" width="800" height='300'/>
 </p>
 <p align="center">
-  <em>Figure 1: he Deep Generative Neural Operator (DGenNO) framework.</em>
+  <em>Figure 1: The Deep Generative Neural Operator (DGenNO) framework.</em>
+</p>
+
+#### DGenNO for inverse problems with noisy, sparse observations
+<p align="center">
+  <img src="./Docs/DGNO4Inverse.png" alt="DGenNO4Inverse" width="800" height='300'/>
+</p>
+<p align="center">
+  <em>Figure 2: Solving the inverse problem with DGenNO.</em>
 </p>
 
 ## 📌 Benchmark Problems
