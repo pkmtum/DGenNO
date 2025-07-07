@@ -4,10 +4,10 @@ The implementation of the [Deep Generative Neural Operator (DGenNO)](https://arx
 **Note:** The implementation of Deep Generative Neural Operator (DGenNO) and other popular deep neural operator (DNO) methods (e.g., DeepONet, FNO, PI-DeepONet, and PINO) can also be found on the Github repository: [Deep-Neural-Operators-for-PDEs](https://github.com/yaohua32/Deep-Neural-Operators-for-PDEs).
 
 <center>
-    <img src="./Docs/DGM4DGNO.png" width = "800" height='600' alt=""/>
+    <img src="./Docs/DGM4DGNO.png" width = "400" height='300' alt=""/>
     <br>
     <div style="color:gray">
-      Fig 1: The Fourier layer
+      The Deep Generative Neural Operator (DGenNO) framework
   	</div>
 </center>
 
