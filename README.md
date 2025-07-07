@@ -21,7 +21,7 @@ The implementation of the [Deep Generative Neural Operator (DGenNO)](https://arx
 
 ### (3) The MultiONet architecture
 <p align="center">
-  <img src="./Docs/MultiONet.png" alt="MultiONet" width="400" height='400'/>
+  <img src="./Docs/MultiONet.png" alt="MultiONet" width="600" height='400'/>
 </p>
 <p align="center">
   <em>Figure 3: a) DeepONet architecture vs. b) MultiONet architecture.</em>
