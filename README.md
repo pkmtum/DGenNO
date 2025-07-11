@@ -45,7 +45,7 @@ We also consider the inverse problem of reconstructing the **piecewise-constant*
 
 ## 🔗 Data Availability
 - **All Physics-aware DNOs** in this repository are trained exclusively using physics information (i.e., **without labeled (a, u) pairs**).
-- Training data and testing data can be downloaded from **[Google Drive](https://drive.google.com/drive/folders/1HLZ6zeNeWTjFCi4OPJDuTA5NCHox1-Wm?usp=sharing)**.
+- Training data and testing data can be downloaded from **[Google Drive](https://drive.google.com/drive/folders/1O1givx3qs90MvaLVmpXMKvmq57EtZrTF?usp=sharing)**.
 
 
 ## 📖 Citation
