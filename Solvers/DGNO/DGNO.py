@@ -81,7 +81,7 @@ class Solver(Module.Solver):
         self.loss_pde_list.append(loss_pde.item())
         self.time_list.append(time.time()-t_start)
         #
-        if isinstance(error_test, list):
+        if error_test.numel()>1:
             errs = [err.item() for err in error_test]
             self.error_list.append(errs)
         else:
@@ -218,6 +218,8 @@ class Solver(Module.Solver):
         ############# The training and testing data
         train_loader = self.dataloader(a_train, u_train, x_train, 
                                        batch_size=batch_size, shuffle=shuffle)
+        test_loader = self.dataloader(a_test, u_test, x_test, 
+                                      batch_size=batch_size)
         ############# The training process
         for epoch in trange(epochs):
             loss_train_sum, loss_data_sum, loss_pde_sum = 0., 0., 0.
@@ -239,21 +241,27 @@ class Solver(Module.Solver):
                 loss_data_sum += loss_data
                 loss_pde_sum += loss_pde
             ###################### The testing loss and error
-            a, u, x = a_test.to(self.device), u_test.to(self.device), x_test.to(self.device)
             lossClass = LossClass(self)
-            try: # when no gradients are required 
-                with torch.no_grad():
+            loss_test_sum = 0.
+            error_test_sum = 0.
+            for a, u, x in test_loader:
+                a, u, x = a.to(self.device), u.to(self.device), x.to(self.device)
+                try: # when no gradients are required 
+                    with torch.no_grad():
+                        loss_test = lossClass.Loss_data(x, a, u)
+                        error_test = lossClass.Error(x, a, u)
+                except: # when gradients are required
                     loss_test = lossClass.Loss_data(x, a, u)
                     error_test = lossClass.Error(x, a, u)
-            except: # when gradients are required
-                loss_test = lossClass.Loss_data(x, a, u)
-                error_test = lossClass.Error(x, a, u)
+                #
+                loss_test_sum += loss_test
+                error_test_sum += error_test
             #
             self.callBack(loss_train_sum/len(train_loader), loss_data_sum/len(train_loader), 
-                          loss_pde_sum/len(train_loader), loss_test, error_test, self.t_start)
+                          loss_pde_sum/len(train_loader), loss_test_sum/len(test_loader), 
+                          error_test_sum/len(test_loader), self.t_start)
             #
-            if isinstance(error_test, list):
-                error_test = sum(error_test)/len(error_test)
+            error_test = torch.mean(error_test_sum/len(test_loader))
             if error_test.item()<self.best_err_test:
                 self.best_err_test = error_test.item()
                 self.saveModel(kwrds['save_path'], 'model_dgno_besterror', self.model_dict)
@@ -307,8 +315,8 @@ class Solver(Module.Solver):
                 loss_pde_sum += loss_pde
             ###################### The testing loss and error
             lossClass = LossClass(self)
-            #
             loss_test_sum = 0.
+            error_test_sum = 0.
             for idx in test_loader:
                 try: # when no gradients are required 
                     with torch.no_grad():
@@ -318,13 +326,13 @@ class Solver(Module.Solver):
                     loss_test = lossClass.Loss_data(idx, 'test')
                     error_test = lossClass.Error()
                 loss_test_sum += loss_test
+                error_test_sum += error_test
             #
             self.callBack(loss_train_sum/len(train_loader), loss_data_sum/len(train_loader), 
                           loss_pde_sum/len(train_loader), loss_test_sum/len(test_loader), 
-                          error_test, self.t_start)
+                          error_test_sum/len(test_loader), self.t_start)
             #
-            if isinstance(error_test, list):
-                error_test = sum(error_test)/len(error_test)
+            error_test = torch.mean(error_test_sum/len(test_loader))
             if error_test.item()<self.best_err_test:
                 self.best_err_test = error_test.item()
                 self.saveModel(kwrds['save_path'], 'model_dgno_besterror', self.model_dict)

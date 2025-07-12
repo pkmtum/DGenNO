@@ -71,7 +71,7 @@ class Solver(Module.Solver):
         self.loss_test_list.append(loss_test.item())
         self.time_list.append(time.time()-t_start)
         #
-        if isinstance(l2_test, list):
+        if l2_test.numel()>1:
             errs = [err.item() for err in l2_test]
             self.l2_test_list.append(errs)
         else:
@@ -218,8 +218,8 @@ class Solver(Module.Solver):
                 #
                 loss_train += loss
             ###################### The testing loss and error
-            a, u, x = a_test.to(self.device), u_test.to(self.device), x_test.to(self.device)
             lossClass = LossClass(self)
+            a, u, x = a_test.to(self.device), u_test.to(self.device), x_test.to(self.device)
             with torch.no_grad():
                 loss_test = lossClass.Loss_data(a, u, x)
                 l2_test = lossClass.Error(a, u, x)
@@ -227,6 +227,7 @@ class Solver(Module.Solver):
             self.callBack(loss_train/len(train_loader), loss_test, 
                           l2_test, self.t_start)
             #
+            l2_test = torch.mean(l2_test)
             if l2_test.item()<self.best_err_test:
                 self.best_err_test = l2_test.item()
                 self.saveModel(kwrds['save_path'], 'model_multionet_besterror', self.model_dict)
@@ -281,8 +282,8 @@ class Solver(Module.Solver):
                 #
                 loss_train += loss
             ###################### The testing loss and error
-            a, u = a_test.to(self.device), u_test.to(self.device)
             lossClass = LossClass(self)
+            a, u = a_test.to(self.device), u_test.to(self.device)
             with torch.no_grad():
                 loss_test = lossClass.Loss_data(a, u, gridx_test.to(self.device))
                 l2_test = lossClass.Error(a, u, gridx_test.to(self.device))
@@ -290,6 +291,7 @@ class Solver(Module.Solver):
             self.callBack(loss_train/len(train_loader), loss_test, 
                           l2_test, self.t_start)
             #
+            l2_test = torch.mean(l2_test)
             if l2_test.item()<self.best_err_test:
                 self.best_err_test = l2_test.item()
                 self.saveModel(kwrds['save_path'], 'model_multionet_besterror', self.model_dict)
