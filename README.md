@@ -49,7 +49,7 @@ Goal: Learn the mapping from in-flow velocity ${\bf u}_0 = (a(x), 0)$ to the pre
 We also consider the inverse problem of reconstructing the **piecewise-constant** permeability field $a(x)$ from **sparse, noisy** observations of $u$. This problem has important applications in subsurface modeling and medical imaging.
 
 ## 🔗 Data Availability
-Training data and testing data can be downloaded from **[Google Drive](https://drive.google.com/drive/folders/1O1givx3qs90MvaLVmpXMKvmq57EtZrTF?usp=sharing)**.
+Training data and testing data can be downloaded from **[Google Drive](https://drive.google.com/drive/folders/1O1givx3qs90MvaLVmpXMKvmq57EtZrTF?usp=sharing)** (all trained forward and inverse models can also be downloaded here).
 
 ## Related Resources
 The implementation of Deep Generative Neural Operator (DGenNO) and other popular deep neural operator (DNO) methods (e.g., DeepONet, FNO, PI-DeepONet, and PINO) can also be found on the Github repository: [https://github.com/yaohua32/Deep-Neural-Operators-for-PDEs](https://github.com/yaohua32/Deep-Neural-Operators-for-PDEs).
