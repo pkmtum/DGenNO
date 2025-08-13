@@ -2,7 +2,7 @@
 The [DGenNO](https://arxiv.org/pdf/2502.06250) is a **physics-informed, probabilistic** framework for solving **parametric PDEs** and challenging **inverse problems**, especially with high-dimensional, **discontinuous inputs**, or **sparse, noisy observations**. Unlike traditional neural operators, DGenNO leverages a deep generative model with **low-dimensional latent variables** that jointly encode PDE inputs and outputs. DGenNO enforces physics constraints **without labeled data** through virtual observables and **weak-form residuals** based on compactly supported radial basis functions (CSRBFs), avoiding higher-order derivatives (saving computing efforts) and relaxing regularity requirements (efficient in dealing with irregular inputs). This enables:
 -  Efficient use of **unlabeled data, i.e., input-output pairs**
 -  Handling **discontinuous or discrete-valued inputs**
--  Efficient in solving **inverse problems with sparse, noisy observation** (observation position are totally free).
+-  Efficient in solving **inverse problems with sparse, noisy observation** (observation positions are totally free).
 - **Robust generalization** to out-of-distribution cases
 - Provides **probabilistic predictions with uncertainty quantification**
 
